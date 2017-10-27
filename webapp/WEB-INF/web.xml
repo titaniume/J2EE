@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>jsp</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- config 获取参数  -->
+  <servlet>
+  	<!-- 把testconfig.jsp配置成一个servlet -->
+   <servlet-name>testconfig</servlet-name>
+  	<jsp-file>/testconfig.jsp</jsp-file>
+  	<!-- 配置初始化参数 -->
+  	<init-param>
+  		<param-name>database-ip</param-name>
+  		<param-value>127.0.0.1</param-value>
+  	</init-param>
+  </servlet>
+  
+  <!--将路径testconfig映射到testconfig.jsp  -->
+  <servlet-mapping>
+  	<servlet-name>testconfig</servlet-name>
+  	<url-pattern>/testconfig</url-pattern>
+  </servlet-mapping>
+</web-app>
