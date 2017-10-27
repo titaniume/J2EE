@@ -1,0 +1,51 @@
+package cn.titanium.filter.filter;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+
+public class FirstFilter implements Filter {
+
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void doFilter(ServletRequest req, ServletResponse resp,
+			FilterChain chain) throws IOException, ServletException {
+		HttpServletRequest request  = (HttpServletRequest)req;
+		HttpServletResponse response = (HttpServletResponse)resp;
+		
+		String ip =request.getRemoteAddr();
+		String url =  request.getRequestURI().toString();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date d = new Date();
+		String date = sdf.format(d);
+		
+		System.out.printf("%s %s 访问了 %s%n", date,ip,url);
+		chain.doFilter(request, response);
+	}
+
+	@Override
+	public void init(FilterConfig arg0) throws ServletException {
+	  //  System.out.println("First Filter init()");
+		/* System.out.println("故意造成一个异常");
+		 
+	        Object o = null;
+	        o.toString();*/
+	}
+
+}
